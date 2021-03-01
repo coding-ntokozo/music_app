@@ -1,0 +1,114 @@
+#profile_layout{
+display: grid;
+grid-template-rows: 1fr 3fr 3fr;
+height:100vh;
+background-color: #ECECEC;
+}
+
+#button_layout{
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  height: 100%;
+  width: 100%;
+  background-color:#D0D0D0;
+}
+.main_button{
+  display: block;
+  margin: 2% 5% 0% 2%;
+  width: 96%;
+  background-color: rgba(255,255,255,0.4);
+  border-style: none;
+  font-size: 12pt;
+}
+
+
+#profile_picture{
+  display: block;
+  border-radius: 50%;
+  height:18vw;
+  width: 18vw;
+  justify-self: center;
+  align-self: center;
+  background-color: black;
+}
+
+
+#home_layout{
+display: grid;
+grid-template-rows: 10% 90%;
+height: 90%;
+width: 90%;
+padding: 4%;
+}
+#tile_layout{
+display: grid;
+height: 100%;
+grid-template-columns: repeat(9, 1fr);
+grid-template-rows: repeat(2, 1fr);
+}
+
+#tile_layout a{
+  text-decoration: none;
+}
+#art_shop_tile{
+  display: block;
+  margin: 0 1% 2% 0;
+  background:blue;
+  grid-column: 1/5;
+  box-shadow: 2px 1px 0px 1px rgba(0,0,0,0.1);
+}
+
+#music_shop_tile{
+  display: block;
+  margin: 0 0 2% 1%;
+  background-color: green;
+  grid-column: 5/10;
+  box-shadow: 2px 1px 0px 1px rgba(0,0,0,0.1);
+}
+
+#live_concert_tile{
+  display: block;
+  width: 100%;
+  height:100%;
+  grid-column: 1/-1;
+  background: red;
+  box-shadow: 2px 1px 0px 1px rgba(0,0,0,0.1);
+
+}
+
+#search_box{
+  display: grid;
+  grid-template-columns: 90% 10%;
+  height:40px;
+  width: 70%;
+  border-style: solid;
+  border-color: rgba(0,0,0,0.1);
+  border-width: 1px;
+  border-radius: 2px;
+  align-self: center;
+  justify-self: right;
+
+}
+
+#search_box input{
+  border-style: none;
+  padding-left: 5%;
+}
+#search_box input:active , input:focus{
+  border-color: transparent;
+  border-style: none;
+  box-shadow: none;
+  outline: none;
+  padding-left: 10%;
+}
+#search_box_icon{
+  display: block;
+  width: 80%;
+  height: 80%;
+  align-self: center;
+  justify-self: center;
+  background: url(../img/G2.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
