@@ -192,12 +192,13 @@ function onClickHeaderEvent(e){
   if(currentGroupBy != clickedHeader.textContent){
   tempArray = groupBy(clickedHeader.textContent);
   removeDisplayItems();
+    displayItemContainerGrow(tempArray.length);
   for(let i =  0 ; i < tempArray.length ; i++){
       createDisplayItem(tempArray[i]);
     }
   for(let i = 0; i< itemsContainerHeader.length; i++){
   itemsContainerHeader[i].style.fontWeight = 'normal';
-}
+  }
   clickedHeader.style.fontWeight = 'bold';
   currentGroupBy = clickedHeader.textContent;
 }
@@ -369,6 +370,7 @@ function elemInArray(arraName, element){
   }
   return 1;
 }
+
 function groupBy(sortInfo){
   results = [];
   if(sortInfo == "artist"){
@@ -483,3 +485,34 @@ function itemsContainerHeightGrow(){
     }
   }
 
+function convertVwToPx(vw){
+  screenWidth = document.documentElement.clientWidth;
+  return vw * screenWidth/100;
+}
+
+let displayItemContainerInitialHeight = parseInt(getComputedStyle(displayItemsContainer).maxHeight.replace('px',''));
+
+function displayItemContainerGrow(numberOfItems){
+  displayItemsWidth = convertVwToPx(14.2); 
+  displayItemsContainerWidth = displayItemsContainer.clientWidth;
+  numberOfItemsInARow = displayItemsContainerWidth / displayItemsWidth;
+  numberOfItemsInARow = Math.floor(numberOfItemsInARow);
+  if(numberOfItemsInARow < numberOfItems){
+    growHeight = setInterval(()=>{
+      displayItemsContainerHeight = parseInt(getComputedStyle(displayItemsContainer).maxHeight.replace('px',''));
+      itemsContainerHeight = parseInt(getComputedStyle(itemsContainer).maxHeight.replace('px',''))
+      displayItemsContainerHeight = displayItemsContainerHeight + 5;
+      itemsContainerHeight = itemsContainerHeight - 5;
+      if(itemsContainerHeight < 0 ){
+        itemsContainerHeight = 0;
+      }
+
+      displayItemsContainer.style.maxHeight = displayItemsContainerHeight + 'px';
+      itemsContainer.style.maxHeight = itemsContainerHeight + 'px';
+    
+      if(displayItemsContainerHeight > 2* displayItemsContainerInitialHeight){
+        clearInterval(growHeight);
+      }
+    },5);    
+  }
+}
