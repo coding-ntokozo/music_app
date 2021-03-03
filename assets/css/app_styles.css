@@ -283,15 +283,24 @@ body{
   grid-template-columns: auto;
   width: 14.2vw;
   height: 35vh;
-  background: url(../img/spiderman.png);
   padding: 0;
   margin:0;
   margin-right: 1vw;
+
+}
+
+.item-layout-large div{
+  display: block;
+  grid-column: 1/-1;
+  grid-row: 1/2;
+  background: url(../img/motion-play-outline.svg);
+  background-size: contain;
+  background-position: center;
+  background-repeat:  no-repeat;
 }
 .item-layout-large span{
   grid-column: 1/-1;
   grid-row: 2/3;
-  background: url(../img/blurred.png);
 }
 .item-layout-large span h3{
   margin: 0;

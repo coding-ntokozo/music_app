@@ -282,6 +282,8 @@ function createNowPlayingItem(trackName, artistName, itemId){
 function createDisplayItem(name){
 displayItem = document.createElement('span');
 displayItemInfoContainer = document.createElement('span');
+displayItemInfoContainerImage = document.createElement('div');
+displayItem.appendChild(displayItemInfoContainerImage);
 displayItemInfoHeader = document.createElement('h3');
 displayItemInfoHeader.textContent = name;
 displayItemInfoContainer.appendChild(displayItemInfoHeader);
