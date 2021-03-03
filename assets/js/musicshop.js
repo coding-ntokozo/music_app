@@ -12,8 +12,6 @@ parseInt(getComputedStyle(displayItemsContainer).maxHeight.replace('px',''));
 const StandardGrowHeight = parseInt(getComputedStyle(itemsContainer).maxHeight.replace('px',''));
 const MinHeight = 0;
 
-let itemsContainerHeightGrow = false;
-let displayItemsContainerHeightGrow = false;
 let currentGroupBy = 'none';
 let currentPlayingTrackPos = 0;
 
@@ -395,3 +393,54 @@ if(nowPlayingList.length == 0){
 }
 }
 console.log(this);
+
+
+//animating the items container
+
+itemsContainer.addEventListener('scroll',()=>{
+    itemsContainerHeightGrow();
+
+  });
+
+let itemsContainerHeightFull = false;
+let itemsContainerInitialHeight = parseInt(getComputedStyle(itemsContainer).maxHeight.replace('px','')); 
+
+function itemsContainerHeightGrow(){
+  if(itemsContainer.scrollTop + itemsContainer.clientHeight > 1.1* itemsContainer.clientHeight){
+      if(itemsContainerHeightFull == false){
+        itemsContainerHeightFull = true;
+          let growHeight = setInterval(()=>{
+            let itemsContainerHeight = getComputedStyle(itemsContainer).maxHeight;
+            itemsContainerHeight = itemsContainerHeight.replace('px','');
+            itemsContainerHeight = parseInt(itemsContainerHeight);
+            itemsContainerHeight = itemsContainerHeight + 2;
+            
+            displayItemsContainerHeight = parseInt(getComputedStyle(displayItemsContainer).maxHeight.replace('px',''));
+            if(displayItemsContainerHeight > 0)
+              displayItemsContainerHeight = displayItemsContainerHeight - 2;
+            displayItemsContainer.style.maxHeight = displayItemsContainerHeight + 'px';
+            itemsContainer.style.maxHeight = itemsContainerHeight + 'px';
+            if(itemsContainerHeight > 2 *itemsContainerInitialHeight){
+              console.log(itemsContainerHeight);
+              clearInterval(growHeight);
+//              console.log(itemsContainerMaxHeight);
+            }
+          },5);
+        }
+    }
+    if(itemsContainer.scrollTop == 0 && itemsContainerHeightFull == true){
+      itemsContainerHeightFull = false;
+       growHeight = setInterval(()=>{
+        itemsContainerHeight = parseInt(getComputedStyle(itemsContainer).maxHeight.replace('px',''));
+        displayItemsContainerHeight = parseInt(getComputedStyle(displayItemsContainer).maxHeight.replace('px',''));
+        itemsContainerHeight = itemsContainerHeight - 2;
+        displayItemsContainerHeight =displayItemsContainerHeight + 2;
+        displayItemsContainer.style.maxHeight = displayItemsContainerHeight + 'px';
+        itemsContainer.style.maxHeight = itemsContainerHeight + 'px';
+        if(itemsContainerHeight < itemsContainerInitialHeight){
+          clearInterval(growHeight);
+        }
+      },5);
+    }
+  }
+
