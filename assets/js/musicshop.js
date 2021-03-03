@@ -11,6 +11,7 @@ const MaxGrowHeight = parseInt(getComputedStyle(itemsContainer).maxHeight.replac
 parseInt(getComputedStyle(displayItemsContainer).maxHeight.replace('px',''));
 const StandardGrowHeight = parseInt(getComputedStyle(itemsContainer).maxHeight.replace('px',''));
 const MinHeight = 0;
+const search = getElementById('search');
 
 let currentGroupBy = 'none';
 let currentPlayingTrackPos = 0;
@@ -168,6 +169,14 @@ trackList = [
 
 
 //adding Events Listeners
+
+search.addEventListener('focus',()=>{
+
+
+
+
+  
+});
 playBtn.addEventListener('click', e=>{
 if(isPlaying){
   nowPlaying.pause();
