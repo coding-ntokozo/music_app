@@ -126,6 +126,43 @@ trackList = [
     iconPath:"",
     numberOfListenings: 0
   },
+  {
+    trackId: "item11",
+    trackName:"I wish I knew",
+    artistName: "Jimmy Dlulu",
+    trackPath: "11.mp3",
+    genre:"Jazz",
+    iconPath:"",
+    numberOfListenings: 0
+  },
+  {
+    trackId: "item12",
+    trackName:"Stuff",
+    artistName: "Kirk Whalum",
+    trackPath: "12.mp3",
+    genre:"Jazz",
+    iconPath:"",
+    numberOfListenings: 0
+  },
+  
+  {
+    trackId: "item13",
+    trackName:"Inkondlo KaShaka",
+    artistName: "Mthizman",
+    trackPath: "13.mp3",
+    genre:"Jazz",
+    iconPath:"",
+    numberOfListenings: 0
+  },
+  {
+    trackId: "item14",
+    trackName:"Im healed",
+    artistName: "James Fortune",
+    trackPath: "14.mp3",
+    genre:"Gospel",
+    iconPath:"",
+    numberOfListenings: 0
+  }
 ];
 
 
