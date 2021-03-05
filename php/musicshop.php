@@ -8,15 +8,6 @@
 <body>
 
   <div  class="info-container">
-    <span class="account-info">
-      <img>
-      <h2>User Name</h2>
-    </span>
-    <span class="btn-bar-container">
-      <span class="btn-bar" ></span>
-      <span class="btn-bar" ></span>
-      <span class="btn-bar" ></span>
-    </span>
     <span class="display-content">
       <div class="currentTrackInfo">
         <h4 id="currentTrack"></h4>

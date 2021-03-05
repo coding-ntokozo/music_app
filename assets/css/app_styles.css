@@ -17,51 +17,9 @@ body{
   height: 100vh;
   box-shadow: 1px 1px 3px 3px rgba(0,0,0,0.2);
 }
-
-.account-info{
-  grid-row: 2/3;
-  display: grid;
-  grid-template-columns: 2.5vw auto;
-}
-
-.account-info h2{
-  padding:0;
-  margin:0;
-  align-self: center;
-}
-.account-info img{
-  display: block;
-  width:2.5vw;
-  height: 2.5vw;
-  border-radius: 100%;
-  border-width: 0;
-  background: url(../img/asd.png);
-  background-size: cover;
-  background-position: center;
-  align-self: center;
-  max-width: 10vh;
-  max-height: 10vh;
-}
-
-.btn-bar-container{
-  grid-row: 2/3;
-  display: grid;
-  grid-template-rows: auto auto auto;
-  width: 60%;
-  height: 60%;
-  align-self: center;
-}
-
-.btn-bar{
-  display: block;
-  width: 100%;
-  height: 20%;
-  align-self: center;
-  background: black;
-}
 .display-content{
   grid-column: 1/-1;
-  grid-row: 4/9;
+  grid-row: 1/9;
   width: 100%;
   height: 100%;
   background: url(../img/elements-of-art-6.png);
@@ -78,9 +36,10 @@ body{
 }
 .display-content-items{
   grid-column: 1/-1;
-  grid-row: 10/12;
+  grid-row: 10/14;
   padding: 2%;
   max-height: 25vh;
+  overflow: auto;
 }
 
 .display-content-item{
