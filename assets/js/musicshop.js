@@ -558,6 +558,7 @@ search.addEventListener('input',()=>{
   }
   else{
     clearContainers();
+    displaySearchResults(['ntokozo','ndlovu']);
   }
 });
 
@@ -584,10 +585,32 @@ function clearContainers(){
 function restoreContainers(){
   itemsContainer.style.display = 'flex';
   currentTitle.style.display = 'block';
-  
+
   for(let i =0; i < itemsHeaderContainer.children.length ; i++){
     itemsHeaderContainer.children[i].style.display = 'block';
   }
   itemsHeaderContainer.removeChild(itemsHeaderContainer.lastChild);
 
+}
+
+//I will rewrite this search algorithm after implementing a good backend but its a start for now
+
+function searchItems(searchParam){
+
+
+}
+
+function displaySearchResults(results){
+  if(results.length != 0){
+    clearContainers();
+  for(let i = 0; i < results.length; i++){
+  createDisplayItem(results[i]);   
+  }
+}
+else {
+  itemNotFound = document.createElement('p');
+  itemNotFound.textContent = 'Not Found';
+  displayItemContainer.appendChild(itemNotFound);
+
+}
 }
