@@ -558,7 +558,7 @@ search.addEventListener('input',()=>{
   }
   else{
     clearContainers();
-    displaySearchResults(['ntokozo','ndlovu']);
+    displaySearchResults([],searchValue);
   }
 });
 
@@ -600,17 +600,21 @@ function searchItems(searchParam){
 
 }
 
-function displaySearchResults(results){
+function displaySearchResults(results,searchParam){
   if(results.length != 0){
     clearContainers();
+    removeDisplayItems();
   for(let i = 0; i < results.length; i++){
-  createDisplayItem(results[i]);   
-  }
+  createDisplayItem(results[i]);     
+}
 }
 else {
+  removeDisplayItems();
   itemNotFound = document.createElement('p');
-  itemNotFound.textContent = 'Not Found';
-  displayItemContainer.appendChild(itemNotFound);
-
+  itemNotFound.textContent = searchParam + '\n'+
+  'Not Found';
+  itemNotFound.style.fontSize = '5vh';
+  displayItemsContainer.appendChild(itemNotFound);
+  console.log('we are here');
 }
 }
