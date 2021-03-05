@@ -36,7 +36,7 @@
     <h1>Music App</h1>
     <span id="search_box" ><input type="text" id="search" placeholder="search" ><span id="search_box_icon"></span> </span>
     <div class="main-app-container">
-        <p id="currentTitle">Favorite</p>
+        <p id="currentTitle">Recents</p>
         <span class="items-container">
         </span>
         <span class="items-container">

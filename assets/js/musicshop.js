@@ -11,11 +11,12 @@ const MaxGrowHeight = parseInt(getComputedStyle(itemsContainer).maxHeight.replac
 parseInt(getComputedStyle(displayItemsContainer).maxHeight.replace('px',''));
 const StandardGrowHeight = parseInt(getComputedStyle(itemsContainer).maxHeight.replace('px',''));
 const MinHeight = 0;
-const search = getElementById('search');
+const search = document.getElementById('search');
+const activeTitle = document.getElementById('currentTitle');
+
 
 let currentGroupBy = 'none';
 let currentPlayingTrackPos = 0;
-
 let nowPlayingList = [];
 let nowCurrentPlaying = 1;
 let isPlaying = false;
@@ -170,13 +171,6 @@ trackList = [
 
 //adding Events Listeners
 
-search.addEventListener('focus',()=>{
-
-
-
-
-  
-});
 playBtn.addEventListener('click', e=>{
 if(isPlaying){
   nowPlaying.pause();
@@ -499,7 +493,8 @@ function convertVwToPx(vw){
   return vw * screenWidth/100;
 }
 
-let displayItemContainerInitialHeight = parseInt(getComputedStyle(displayItemsContainer).maxHeight.replace('px',''));
+let displayItemsContainerInitialHeight = parseInt(getComputedStyle(displayItemsContainer).maxHeight.replace('px',''));
+let containerItemsCollapsed = false;
 
 function displayItemContainerGrow(numberOfItems){
   displayItemsWidth = convertVwToPx(14.2); 
@@ -515,7 +510,7 @@ function displayItemContainerGrow(numberOfItems){
       if(itemsContainerHeight < 0 ){
         itemsContainerHeight = 0;
       }
-
+      containerItemsCollapsed = true;
       displayItemsContainer.style.maxHeight = displayItemsContainerHeight + 'px';
       itemsContainer.style.maxHeight = itemsContainerHeight + 'px';
     
@@ -525,3 +520,30 @@ function displayItemContainerGrow(numberOfItems){
     },5);    
   }
 }
+
+
+function uncollapseItemsContainer(){
+    if(containerItemsCollapsed == true){
+      containerItemsCollapsed = false;
+      growHeight = setInterval(()=>{
+        displayItemsContainerHeight = parseInt(getComputedStyle(displayItemsContainer).maxHeight.replace('px',''));
+        itemsContainerHeight = parseInt(getComputedStyle(itemsContainer).maxHeight.replace('px',''));
+        itemsContainerHeight = itemsContainerHeight + 2;
+        displayItemsContainerHeight = displayItemsContainerHeight - 2;
+        displayItemsContainer.style.maxHeight = displayItemsContainerHeight + 'px';
+        itemsContainer.style.maxHeight = itemsContainerHeight + 'px';
+        if(itemsContainerHeight > itemsContainerInitialHeight){
+          clearInterval(growHeight);
+        }
+      },5);
+    }
+  }
+
+activeTitle.addEventListener('click',e=>{
+  elem =  e.toElement;
+  if(containerItemsCollapsed == true){
+    uncollapseItemsContainer();
+  }
+  elem.style.fontWeight = 'bold';
+
+});
